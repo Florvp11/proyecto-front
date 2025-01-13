@@ -14,17 +14,20 @@ export function Header({ changeSearch, favorites, handleHomeClick }) {
     }
   };
 
-  // Cerrar menú si la pantalla se agranda
-  useEffect(() => {
+  useEffect(() => {  //para cerrar el men hamburguesa si agrandola pantalla 
     const handleResize = () => {
       if (window.innerWidth > 768) {
-        setMenuOpen(false); // Cierra el menú automáticamente
+        setMenuOpen(false); 
       }
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const cleanSearch = () => {
+    setSearchValue("")
+  }
 
   return (
     <header className="header">
@@ -33,7 +36,10 @@ export function Header({ changeSearch, favorites, handleHomeClick }) {
       </button>
 
       <div className={`menu ${menuOpen ? 'open' : ''}`}>
-        <Link className="home" to="/" onClick={handleHomeClick}>
+        <Link className="home" to="/" onClick={()=> {
+          cleanSearch()
+          handleHomeClick()
+          }}>
           <HiOutlineHome size={24} />
         </Link>
 
@@ -55,7 +61,7 @@ export function Header({ changeSearch, favorites, handleHomeClick }) {
           </button>
         </div>
 
-        <Link className="favIcon" to="/favoritespage">
+        <Link onClick={cleanSearch} className="favIcon" to="/favoritespage">
           <HiOutlineHeart size={24} />
         </Link>
       </div>

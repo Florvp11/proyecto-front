@@ -27,8 +27,6 @@ export function RandomMeal() { //muestra recetas random en la pantalla principal
                     <img src={randomMeal.strMealThumb} alt={randomMeal.strMeal} />
                     <div className="content">
                         <h2>{randomMeal.strMeal}</h2>
-
-                        {/* Mostrar solo los primeros 100 caracteres de strInstructions */}
                         <p className="description">{randomMeal.strInstructions.slice(0, 500)}...</p>
                     </div>
 

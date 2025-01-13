@@ -25,11 +25,8 @@ function App() {
 
 
 
-
-  // Navegador para redirigir a diferentes rutas
   const navigate = useNavigate();
 
-  // abecedario 
   const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
 
@@ -48,12 +45,10 @@ function App() {
       const response = await fetch(`${API_URL}${letter}`);
       const data = await response.json();
 
-      // Si se obtienen recetas las agrega al estado existente
       if (data.meals) {
         setMeals((prevMeals) => [...prevMeals, ...data.meals]);
       }
 
-      // Incrementa el índice para cargar la siguiente letra
       setCurrentLetterIndex((prevIndex) => prevIndex + 1);
     } catch (error) {
       console.error("Error cargando más recetas:", error);
@@ -62,19 +57,17 @@ function App() {
     }
   };
 
-  // Detecta cuando el usuario hace scroll al final de la página y carga más recetas
   useEffect(() => {
     const handleScroll = () => {
-      // Verifica si el usuario llegó al final de la página
+      // verifica si el usuario llegó al final de la página para q se carguen mas recetas 
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
-        loadMeals(); // Carga más recetas
+        loadMeals();
       }
     };
 
-    // Agrega un event listener para el scroll
+ 
     window.addEventListener("scroll", handleScroll);
 
-    // Limpia el event listener cuando el componente se desmonta
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -84,16 +77,15 @@ function App() {
 
   const changeSearch = (value) => {
 
-    if (pathname !== "/") { //cuando busco si estoy en otro <> main me lleva a main y me trae el contenido
+    if (pathname !== "/") { //cuando busco si estoy en otro != main me lleva a main y me trae el contenido
       navigate("/")
 
     }
-    setSearch(value.trim()); // Actualiza el término de búsqueda
+    setSearch(value.trim()); 
     setMeals([]); // Resetea las recetas cargadas
-    setCurrentLetterIndex(0); // Reinicia el índice de letras
+    setCurrentLetterIndex(0); 
   };
 
-  // Efecto que busca recetas cuando hay un término de búsqueda activo
   useEffect(() => {
     if (search) {
       const fetchMealsBySearch = async () => {
@@ -103,12 +95,11 @@ function App() {
           );
           const data = await response.json();
 
-          // Si se encuentran recetas se actualiza el estado
           if (data.meals) {
             setMeals(data.meals);
           } else {
-            // Si no hay resultados, redirige a una página de "No existe"
-            navigate("/noexiste");
+           
+            navigate("/noexiste"); //me lleva a no exxiste si escribi algo q no se encuentra en la api
           }
         } catch (error) {
           console.error("Error buscando recetas:", error);
@@ -119,27 +110,25 @@ function App() {
     } else {
       loadMeals();
     }
-  }, [search, navigate]);
+  }, [search]);
 
   //-------------------FAVRORITOS-----------------//
 
-
-  // Carga los favoritos almacenados en localStorage cuando se monta el componente
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setFavorites(storedFavorites); // Establece los favoritos en el estado
+    setFavorites(storedFavorites); 
   }, []);
-  // ........Función para agregar o quitar una receta de FAVORITOS
+
 
   const toggleFavorite = (meal) => {
     const isFavorite = favorites.some((fav) => fav.idMeal === meal.idMeal);
 
     const updatedFavorites = isFavorite
-      ? favorites.filter((fav) => fav.idMeal !== meal.idMeal)        // Si ya esta en favorito, lo elimina si no, lo agrega
+      ? favorites.filter((fav) => fav.idMeal !== meal.idMeal)        // Si ya esta en favorito lo elimino si no esta lo agrego
       : [...favorites, meal];
 
-    setFavorites(updatedFavorites); // Actualiza el estado de favoritos
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Guarda los favoritos en localStorage
+    setFavorites(updatedFavorites); 
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // guardo los favoritos en localStorage
   };
 
   return (
@@ -148,7 +137,7 @@ function App() {
         changeSearch={changeSearch}
         favorites={favorites}
         toggleFavorite={toggleFavorite}
-        handleHomeClick={() => setSearch("")} // Limpia la búsqueda al hacer clic en "Inicio"
+        handleHomeClick={() => setSearch("")} 
       />
 
       <Categorias />

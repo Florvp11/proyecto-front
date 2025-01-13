@@ -44,7 +44,7 @@
     padding-inline: 3%;
     border-radius: var(--border-radius);
 }
-/* Media Query para pantallas pequeñas */
+
 @media (max-width: 768px) {
     :root{
         --padding-normal: 0.8rem;
@@ -63,7 +63,7 @@
     }
 }
 
-/* Media Query para celulares */
+
 @media (max-width: 480px) {
     :root{
         --padding-normal: 0.6rem;

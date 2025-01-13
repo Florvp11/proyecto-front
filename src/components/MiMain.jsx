@@ -12,7 +12,7 @@ export function MiMain({ meals, toggleFavorite }) {
                 ) : (
                     <>
 
-                        <RandomMeal /> {/* Muestra el componente RandomMeal cuando no hay recetas */}
+                        <RandomMeal /> 
                         <ListaRecetas meals={meals} toggleFavorite={toggleFavorite} />
                     </>
                 )

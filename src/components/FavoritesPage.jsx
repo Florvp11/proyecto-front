@@ -12,13 +12,11 @@ export function FavoritesPage() {
         setFavorites(storedFavorites);
     }, []);
 
-    // Mueve la función dentro del componente para que tenga acceso al estado local
+   
     const removeFromFavorites = (id) => {
         const updatedFavorites = favorites.filter((receta) => receta.idMeal !== id);
 
-        setFavorites(updatedFavorites);   // Actualizar el estado de local
-
-        // Actualizar el localStorage
+        setFavorites(updatedFavorites);  
         localStorage.setItem("favoriteRecipes", JSON.stringify(updatedFavorites));
     };
 

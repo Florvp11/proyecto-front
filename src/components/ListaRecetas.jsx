@@ -47,7 +47,7 @@ export function ListaRecetas({ meals, toggleFavorite }) {
                             </div>
                             <div className="recipes-container">
                                 <h2 className="meal-title">{meal.strMeal}</h2>
-                                {/* Aquí se reutiliza el componente de los tags */}
+                
                                 <Tags tags={tags} />
                             </div>
                         </Link>

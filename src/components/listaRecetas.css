@@ -77,25 +77,24 @@
  
 }
 
-  /* Estilo del contenedor de tags */
   .tag-list {
     list-style-type: none;
     padding: 0;
     margin: 10px 0 0 0;
-    font-size: 0.85em;  /* Ajusta el tamaño del texto */
+    font-size: 0.85em;  
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Permite que los tags se acomoden en varias líneas si lo necesitan*/
+    flex-wrap: wrap; 
     gap: var(--gap-small);
   }
   
-  /* Estilo para cada tag */
+
   .tag-item {
     padding:0.5rem 0.55rem; 
     border-radius: 1rem;
     display: inline-block;
     max-width: 100%; 
-    text-overflow: ellipsis;  /*por si es muy largo el texto je*/
+    text-overflow: ellipsis;  /*por si es muy largo el texto*/
     overflow: hidden;
     white-space: nowrap; 
     box-sizing: border-box;

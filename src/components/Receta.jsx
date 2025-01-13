@@ -20,10 +20,10 @@ export function Receta({ search }) {
 
         fetchData();
 
-        // Verifica si la receta ya esta en favoritos
-        const storedFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-        // Verifica si la receta esta en los favoritos comparando el id
-        const isFav = storedFavorites.some(fav => fav.idMeal === id);
+       
+        const storedFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || []; //esta en fav?
+        
+        const isFav = storedFavorites.some(fav => fav.idMeal === id); //se fija con el id
         setIsFavorite(isFav);
 
     }, [id]);
@@ -32,19 +32,17 @@ export function Receta({ search }) {
         const storedFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
 
         if (isFavorite) {
-            // Si la receta ya está marcada como favorita, la elimino
-            const updatedFavorites = storedFavorites.filter(fav => fav.idMeal !== id);
+            const updatedFavorites = storedFavorites.filter(fav => fav.idMeal !== id); //si esta en fav y aprieto la elimina
             localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFavorites));
             setIsFavorite(false);
-        } else {
-            // Si no está en favoritos, la añado
+        } else { //si no la agrego
+            
             storedFavorites.push(receta);  // Guardo la receta completa
             localStorage.setItem('favoriteRecipes', JSON.stringify(storedFavorites));
             setIsFavorite(true);
         }
     };
 
-    // Funcion para filtrar los ingredientes validos 
     const getIngredientes = () => {
         const ingredientes = [];
         for (let i = 1; i <= 20; i++) {  // tiene hasta 20 ingredientes segun la api
