@@ -1,0 +1,145 @@
+.grid-recipes{
+    width: 100%;
+    height: 100%;
+    padding-inline: 4%;
+    margin-block: var(--recip-margin);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-Extralarge);
+    padding-inline: 4%;
+    
+}
+.allRecipes{
+   background-color: var(--color-bg-header);
+   width: 100%;
+   color: var(--titles-color);
+   text-align: center;
+   padding: var(--padding-normal);
+   border-radius: var(--border-radius);
+   border: 1px solid var(--border-color-categories)
+}
+.recipes{
+    
+    width: 100%;
+
+ 
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    align-items: center;
+    gap: var(--gap-Extralarge);
+
+}
+
+.meals-card{
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    background-color:var(--color-bg-cards);
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0px 2px 10px #00000055;
+    transition: all .3s ease-in-out;
+    gap: var(--gap-medium);
+    border-radius: 1rem;
+
+    &:hover{
+        transform: scale(1.05);
+        
+    }
+}
+
+.meals-card h2, .meals-card li, .meals-card h3{
+    color: #111;
+}
+
+.recipes-container{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-medium);
+    padding: 0.3rem 1rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+.meals-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 1rem;
+    
+ 
+}
+
+  /* Estilo del contenedor de tags */
+  .tag-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    font-size: 0.85em;  /* Ajusta el tamaño del texto */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que los tags se acomoden en varias líneas si lo necesitan*/
+    gap: var(--gap-small);
+  }
+  
+  /* Estilo para cada tag */
+  .tag-item {
+    padding:0.5rem 0.55rem; 
+    border-radius: 1rem;
+    display: inline-block;
+    max-width: 100%; 
+    text-overflow: ellipsis;  /*por si es muy largo el texto je*/
+    overflow: hidden;
+    white-space: nowrap; 
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: .9rem;
+    
+    background-color: #e7e7e7; 
+    color : #333; 
+  }
+
+  @media screen and (max-width: 600px) {
+ 
+
+    
+    .grid-recipes .recipes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--gap-medium);
+    }
+    
+    .meals-card {
+        max-width: 100%;
+        padding: var(--padding-small);
+    }
+
+    .recipe-info {
+        padding: var(--padding-small);
+        margin-top: var(--padding-medium);
+    }
+}
+
+
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    
+    
+    
+    .grid-recipes .recipes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gap-medium);
+    }
+
+    .meals-card {
+        max-width: 250px;
+    }
+}
+
+
