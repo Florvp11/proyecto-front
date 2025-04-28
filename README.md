@@ -1,5 +1,4 @@
 **Food Recipes SPA**
-### ________________________________________________________________________________________
 - Desarrollé una Single Page Application (SPA) utilizando **React.js** para el Frontend. El diseño de componentes fue realizado con **CSS puro**, sin uso de librerías externas de estilos.
 - La aplicación obtiene los datos de una **API externa**.
 - Funcionalidades principales:
